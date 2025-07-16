@@ -1,6 +1,7 @@
 package org.example;
 
-import org.example.coupling.Restaurant;
+import org.example.loosecouppling.BinarySearch;
+import org.example.tightcoupling.Restaurant;
 import java.util.Scanner;
 
 /**
@@ -16,5 +17,8 @@ public class App
         System.out.println("Enter your choice");
         String choice = sc.next();
         restaurant.orderSomething(choice);
+
+        BinarySearch binarySearch = new BinarySearch();
+        System.out.println(binarySearch.search(12));
     }
 }

@@ -1,4 +1,4 @@
-package org.example.coupling;
+package org.example.tightcoupling;
 
 public class Restaurant {
 
