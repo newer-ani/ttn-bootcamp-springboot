@@ -1,8 +1,14 @@
 package org.example.loosecouppling;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+
 import java.util.Collections;
 import java.util.List;
 
+@Component
+@Primary
 public class BubbleSort implements SortingAlgorithm{
 
     public List<Integer> sort(List<Integer> list) {
