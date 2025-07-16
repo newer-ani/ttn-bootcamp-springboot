@@ -14,6 +14,16 @@ public class BinarySearch {
     SortingAlgorithm sortingAlgorithm = new BubbleSort();
     @Autowired
     private SortingAlgorithm sortingAlgo;
+    @Autowired
+    @Qualifier("quickSort")   // answer to Q5
+    private SortingAlgorithm sortingAlgo2;
+
+    private final MergeSort mergeSort;
+
+    @Autowired
+    public BinarySearch(MergeSort mergeSort) {       //answer to question 6
+        this.mergeSort = mergeSort;
+    }
 
     public int search( int element) {
         List<Integer> list = new ArrayList<>();
@@ -24,7 +34,9 @@ public class BinarySearch {
         list.add(45);
         list.add(23);
         // for Q2    sortingAlgorithm.sort(list);
-        sortingAlgo.sort(list); //for question 3
+       // sortingAlgo.sort(list); //for question 3
+       // sortingAlgo2.sort(list);
+        mergeSort.sort(list);
         int result = Collections.binarySearch(list, element);
         return result;
     }

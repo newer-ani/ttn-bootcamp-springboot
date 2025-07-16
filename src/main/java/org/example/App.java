@@ -31,8 +31,8 @@ public class App
         //BinarySearch binarySearch = new BinarySearch();
 
         ApplicationContext context = SpringApplication.run(App.class, args);
-        BinarySearch binarySearch1 = context.getBean(BinarySearch.class);
+        BinarySearch binarySearch1 = context.getBean(BinarySearch.class);    //answer for Q4
        // System.out.println(binarySearch.search(12));
-        System.out.println(binarySearch1.search(12));
+        System.out.println(binarySearch1.search(12)); 
     }
 }
