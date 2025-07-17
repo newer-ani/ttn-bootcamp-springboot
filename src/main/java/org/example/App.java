@@ -5,9 +5,10 @@ import org.example.tightcoupling.Restaurant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Scanner;
@@ -16,7 +17,8 @@ import java.util.Scanner;
  * Hello world!
  *
  */
-@SpringBootApplication
+@Configuration
+@ComponentScan
 public class App 
 {
 
@@ -28,9 +30,9 @@ public class App
         String choice = sc.next();
         restaurant.orderSomething(choice);
 
-        //BinarySearch binarySearch = new BinarySearch();
+       // BinarySearch binarySearch = new BinarySearch();
 
-        ApplicationContext context = SpringApplication.run(App.class, args);
+         ApplicationContext context = new AnnotationConfigApplicationContext(App.class);
         BinarySearch binarySearch1 = context.getBean(BinarySearch.class);    //answer for Q4
        // System.out.println(binarySearch.search(12));
         System.out.println(binarySearch1.search(12)); 
