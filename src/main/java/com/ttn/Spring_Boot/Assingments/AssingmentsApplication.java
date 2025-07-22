@@ -16,8 +16,6 @@ public class AssingmentsApplication {
 
 		System.out.println("Message: " + checkKui.getGreeting());
 
-
-
 		// To answer the Q3 i have create a schema.sql file under the resources section which contains the sql query for answering Q3
 	}
 
