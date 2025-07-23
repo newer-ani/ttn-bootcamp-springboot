@@ -4,10 +4,13 @@ import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.ttn.Spring_Boot.Assingments.dtos.UserDto;
+import com.ttn.Spring_Boot.Assingments.hateoas.User;
 import com.ttn.Spring_Boot.Assingments.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -70,5 +73,19 @@ public class UserController {
     public MappingJacksonValue dynamicFiltering()
     {
        return  userService.getFilteredUsers();
+    }
+
+    @GetMapping("/user/{id}")
+    public User getUser(@PathVariable Long id) {
+        // Dummy user
+        User user = new User(id, "Animesh");
+
+        // Add HATEOAS link to /topics endpoint
+        Link topicsLink = WebMvcLinkBuilder.linkTo(
+                        WebMvcLinkBuilder.methodOn(TopicController.class).getAllTopics())
+                .withRel("all-topics");
+
+        user.add(topicsLink);
+        return user;
     }
 }
