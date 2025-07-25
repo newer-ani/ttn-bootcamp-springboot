@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class OrderServiceTest {
@@ -28,6 +30,20 @@ public class OrderServiceTest {
         verify(order).setPriceWithTax(20.0);
         verify(emailService).sendEmail(order);
         verify(order).setCustomerNotified(true);
+    }
+
+    @Test
+    public void testPlaceOrderWithCc_shouldSetPriceAndNotifyCustomer() {
+        Order order = new Order(2,"Item1",20.00);
+        assertTrue(orderService.placeOrder(order, "cc@gmail.com"));
+        assertEquals(24.0, order.getPriceWithTax(), 0.01);
+    }
+
+    @Test
+    public void testPlaceOrderWithOrder_shouldNotifyCustomer() {
+        Order order = new Order(2,"Item1",20.00);
+        orderService.placeOrder(order, "cc@gmail.com");
+        assertTrue(order.isCustomerNotified());
     }
 }
 

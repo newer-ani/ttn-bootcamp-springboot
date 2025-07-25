@@ -16,12 +16,12 @@ public class EmailService {
         return instance;
     }
 
-    void sendEmail(Order order) {
+ public  void sendEmail(Order order) {
         order.setCustomerNotified(false);
         throw new RuntimeException("An Exception Occurred");
     }
 
-    boolean sendEmail(Order order, String cc) {
+    public boolean sendEmail(Order order, String cc) {
         order.setCustomerNotified(true);
         return true;
     }

@@ -18,14 +18,14 @@ public class OrderService {
         emailService = EmailService.getInstance();
     }
 
-    void placeOrder(Order order) {
+    public void placeOrder(Order order) {
         double priceWithTax = order.getPrice() * 20 / 100;
         order.setPriceWithTax(priceWithTax);
         emailService.sendEmail(order);
         order.setCustomerNotified(true);
     }
 
-    boolean placeOrder(Order order, String cc) {
+    public boolean placeOrder(Order order, String cc) {
         double priceWithTax = order.getPrice() * 20 / 100;
         order.setPriceWithTax(priceWithTax);
         boolean isNotified = emailService.sendEmail(order, cc);
