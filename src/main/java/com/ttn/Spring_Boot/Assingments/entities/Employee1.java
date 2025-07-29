@@ -11,6 +11,9 @@ public class Employee1 {
     private String firstName;
     private String lastName;
     private int age;
+    private double taxAmount;
+    private int specialAllowanceSalary;
+
 
     @AttributeOverrides({
             @AttributeOverride(name = "column", column = @Column(name = "amount")),
@@ -56,6 +59,21 @@ public class Employee1 {
         this.age = age;
     }
 
+    public double getTaxAmount() {
+        return taxAmount;
+    }
+
+    public void setTaxAmount(double taxAmount) {
+        this.taxAmount = taxAmount;
+    }
+
+    public int getSpecialAllowanceSalary() {
+        return specialAllowanceSalary;
+    }
+
+    public void setSpecialAllowanceSalary(int specialAllowanceSalary) {
+        this.specialAllowanceSalary = specialAllowanceSalary;
+    }
 
 
 
