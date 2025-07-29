@@ -12,9 +12,9 @@ public class AssingmentsApplication {
 		ApplicationContext context = SpringApplication.run(AssingmentsApplication.class, args);
 
 
-		Check checkKui = context.getBean(Check.class);
-
-		System.out.println("Message: " + checkKui.getGreeting());
+//		Check checkKui = context.getBean(Check.class);
+//
+//		System.out.println("Message: " + checkKui.getGreeting());
 
 
 
